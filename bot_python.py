@@ -1,7 +1,7 @@
 import os
 import telebot
 from telebot import types
-from flask import Flask
+# from flask import Flask
 
 bot = telebot.TeleBot(os.getenv("BOT_TOKEN"))
 @bot.message_handler(commands=["start"])
@@ -18,22 +18,21 @@ def question(message):
 
     bot.send_message(message.chat.id, "שלום, אני הבוט של חגית בן פורת. איך אוכל לסייע?🙂", reply_markup=markup)#1
 
-def run_bot():
-    bot.polling()
+bot.polling()
 
-# Simple Flask server setup
-app = Flask(__name__)
+# # Simple Flask server setup
+# app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Bot is running!"
+# @app.route('/')
+# def home():
+#     return "Bot is running!"
 
-if __name__ == "__main__":
-    import threading
-    # Run the bot in a separate thread
-    bot_thread = threading.Thread(target=run_bot)
-    bot_thread.start()
+# if __name__ == "__main__":
+#     import threading
+#     # Run the bot in a separate thread
+#     bot_thread = threading.Thread(target=run_bot)
+#     bot_thread.start()
 
-    # Start the Flask server
-    port = int(os.environ.get("PORT", 10000))  # Use Render's assigned PORT
-    app.run(host="0.0.0.0", port=port)
+#     # Start the Flask server
+#     port = int(os.environ.get("PORT", 10000))  # Use Render's assigned PORT
+#     app.run(host="0.0.0.0", port=port)
